@@ -42,7 +42,7 @@ const managerQuestions =[
         message: "What is your manager's email?",
         validate: function validateEmail(email) {
             if (email.includes("@") && email.includes(".")) {
-                console.log(". Thank you for provide an valid email")
+                console.log(". Thank you for provide a valid email")
                 return true;
             } else {
                 console.log(". Please Enter a valid email")
@@ -65,7 +65,7 @@ const managerQuestions =[
 const addMemberQuestion=[
     {
         type:"list",
-        name:"roleOfMemeber",
+        name:"role",
         message:"Which type of team member would you like to add?",
         choices:["Engineer", "Intern", "No More Team"]
     }
@@ -101,7 +101,7 @@ const engineerQuestions=[
         message: "What is the engineer's email?",
         validate: function validateEmail(email) {
             if (email.includes("@") && email.includes(".")) {
-                console.log(". Thank you for provide an valid email")
+                console.log(". Thank you for provide a valid email")
                 return true;
             } else {
                 console.log(". Please Enter a valid email")
@@ -145,7 +145,7 @@ const internQuestions=[
         message: "What is the 's email?",
         validate: function validateEmail(email) {
             if (email.includes("@") && email.includes(".")) {
-                console.log(". Thank you for provide an valid email")
+                console.log(". Thank you for provide a valid email")
                 return true;
             } else {
                 console.log(". Please Enter a valid email")
@@ -158,15 +158,58 @@ const internQuestions=[
         message: "What is the intern's school?",
     }
 ]
-inquirer.prompt(managerQuestions)
-.then(res => {
-    console.log(res)
-}).catch(err => {
-    console.log(err)
-})
-// function validateEmail(email) {
-//     return Joi.validate(email, Joi.string().email(), onValidation);
-// const questions=[]
+
+function initalize (){
+    inquirer.prompt(managerQuestions)
+    .then (res=>{
+        console.log(res);
+        buildTeam()
+    });
+};
+function buildTeam(){
+    inquirer.prompt(addMemberQuestion)
+    .then(res=>{
+        if (res.role === "Engineer"){
+            return inquirer.prompt(engineerQuestions)
+            .then(res=>{
+                console.log(res);
+                buildTeam()
+            });
+        } else if (res.role ==="Intern"){
+            return inquirer.prompt(internQuestions)
+            .then(res=>{
+                console.log(res);
+                buildTeam()
+            });     
+        } else {
+            console.log("Finished adding team member")
+        }
+    })
+}
+initalize();
+
+// inquirer.prompt(managerQuestions)
+// .then(res => {
+//     console.log(res)
+//     inquirer.prompt(addMemberQuestion)
+//     .then(res=> {
+//         console.log(res)
+//         if(res === "Engineer"){
+//             inquirer.prompt(engineerQuestions)
+//         } else if(res === "Intern"){
+//             inquirer.prompt(internQuestions)
+//         } else if(res ==="No More Team"){
+//             console.log("finished adding member")
+//         }
+//     }).catch(err=>{
+//         console.log(err)
+//     })
+// })
+
+// .catch(err => {
+//     console.log(err)
+// })
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -185,8 +228,4 @@ inquirer.prompt(managerQuestions)
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
 
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+
