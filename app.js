@@ -160,26 +160,25 @@ function initalize() {
         .then(res => {
             const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
             employee.push(manager);
-            console.log(manager);
-            buildTeam();
+            return buildTeam();
         });
 };
 function buildTeam() {
-    inquirer.prompt(addMemberQuestion)
+    return inquirer.prompt(addMemberQuestion)
         .then(addTeam => {
             if (addTeam.role === "Engineer") {
                 return inquirer.prompt(engineerQuestions)
                     .then(res => {
                         const engineer = new Engineer(res.name, res.id, res.email, res.github);
                         employee.push(engineer);
-                        buildTeam();
+                        return buildTeam();
                     });
             } else if (addTeam.role === "Intern") {
                 return inquirer.prompt(internQuestions)
                     .then(res => {
                         const intern = new Intern(res.name, res.id, res.email, res.schoolName)
                         employee.push(intern);
-                        buildTeam()
+                        return buildTeam()
                     });
             } else {
                 console.log("Finished adding team member")
@@ -197,38 +196,14 @@ function buildTeam() {
                             console.log("Generate file")
                         });
                     }
-                } catch(err){
+                } catch (err) {
                     console.log(err)
                 }
-         
-        }
+
+            }
         })
-}
-initalize()
-
-
-// inquirer.prompt(managerQuestions)
-// .then(res => {
-//     console.log(res)
-//     inquirer.prompt(addMemberQuestion)
-//     .then(res=> {
-//         console.log(res)
-//         if(res === "Engineer"){
-//             inquirer.prompt(engineerQuestions)
-//         } else if(res === "Intern"){
-//             inquirer.prompt(internQuestions)
-//         } else if(res ==="No More Team"){
-//             console.log("finished adding member")
-//         }
-//     }).catch(err=>{
-//         console.log(err)
-//     })
-// })
-
-// .catch(err => {
-//     console.log(err)
-// })
-
+};
+initalize();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
