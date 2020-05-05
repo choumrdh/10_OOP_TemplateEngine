@@ -20,8 +20,8 @@
   ###  Installation :floppy_disk::
   
 ```
-    - dependencies: inquirer "^6.3.1"
-    - devDependencies": jest "^24.8.0 
+    - dependencies: inquirer 
+    - devDependencies": jest 
 ```
   ### Usage
 
@@ -44,3 +44,7 @@
   
  ### License :trophy:
    - [![Copyright](https://img.shields.io/badge/Copyright-Michelle-blue)](https://github.com/choumrdh)
+
+##### Example Video:
+> click on picture to watch my example
+> [![testScreenShot](test.png)](https://drive.google.com/file/d/179dTYmnHEsQwRKk8C9pfnn4HaSgRxbia/view)
