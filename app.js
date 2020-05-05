@@ -5,20 +5,21 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
+const util = require("util")
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+
 
 const employee = [];
 const managerQuestions = [{
     type: "input",
     name: "name",
     message: "What is your manager's name?",
-    validate: function validateName(name) {
+    validate: (name) => {
         if (name === "") {
-            console.log("Please enter name");
+            console.log(". Please enter name");
             return false
         } else {
             return true
@@ -28,11 +29,11 @@ const managerQuestions = [{
     type: "input",
     name: "id",
     message: "What is your manager's ID?",
-    validate: function validateId(id) {
+    validate: (id) => {
         if (parseInt(id)) {
             return true
         } else {
-            console.log("Please enter a number for ID")
+            console.log(". Please enter a number for ID");
             return false;
         }
     }
@@ -40,9 +41,9 @@ const managerQuestions = [{
     type: "input",
     name: "email",
     message: "What is your manager's email?",
-    validate: function validateEmail(email) {
+    validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
-            console.log(". Thank you for provide a valid email")
+            console.log(". Thank you for provide an email")
             return true;
         } else {
             console.log(". Please Enter a valid email")
@@ -53,11 +54,11 @@ const managerQuestions = [{
     type: "input",
     name: "officeNumber",
     message: "What is your manager's office number?",
-    validate: function validateId(id) {
+    validate: (id) => {
         if (parseInt(id)) {
             return true
         } else {
-            console.log("Please enter a number for ID")
+            console.log(". Please enter a number for ID")
             return false;
         }
     }
@@ -74,7 +75,7 @@ const engineerQuestions = [{
     type: "input",
     name: "name",
     message: "What is the engineer's name?",
-    validate: function validateName(name) {
+    validate: (name) => {
         if (name === "") {
             console.log("Please enter name");
             return false
@@ -86,7 +87,7 @@ const engineerQuestions = [{
     type: "input",
     name: "id",
     message: "What is the engineer's ID?",
-    validate: function validateId(id) {
+    validate: (id) => {
         if (parseInt(id)) {
             return true
         } else {
@@ -98,7 +99,7 @@ const engineerQuestions = [{
     type: "input",
     name: "email",
     message: "What is the engineer's email?",
-    validate: function validateEmail(email) {
+    validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
             console.log(". Thank you for provide a valid email")
             return true;
@@ -116,9 +117,9 @@ const internQuestions = [{
     type: "input",
     name: "name",
     message: "What is the intern's name?",
-    validate: function validateName(name) {
+    validate: (name) => {
         if (name === "") {
-            console.log("Please enter name");
+            console.log(". Please enter name");
             return false
         } else {
             return true
@@ -128,11 +129,11 @@ const internQuestions = [{
     type: "input",
     name: "id",
     message: "What is the intern's ID?",
-    validate: function validateId(id) {
+    validate: (id) => {
         if (parseInt(id)) {
             return true
         } else {
-            console.log("Please enter a number for ID")
+            console.log(". Please enter a number for ID")
             return false;
         }
     }
@@ -140,7 +141,7 @@ const internQuestions = [{
     type: "input",
     name: "email",
     message: "What is the 's email?",
-    validate: function validateEmail(email) {
+    validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
             console.log(". Thank you for provide a valid email")
             return true;
