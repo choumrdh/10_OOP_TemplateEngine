@@ -23,6 +23,7 @@ const managerQuestions = [{
             return false
         } else {
             return true
+            
         }
     }
 }, {
@@ -161,7 +162,6 @@ function initalize() {
         .then(res => {
             const manager = new Manager(res.name, res.id, res.email, res.officeNumber);
             employee.push(manager);
-            return buildTeam();
         });
 };
 function buildTeam() {
@@ -183,44 +183,35 @@ function buildTeam() {
                     });
             } else {
                 console.log("Finished adding team member")
-                var renderInfo = render(employee)
-                try {
-                    if (fs.existsSync(OUTPUT_DIR)) {
-                        fs.writeFile(outputPath, renderInfo, (err) => {
-                            if (err) throw err;
-                            console.log("Generate file")
-                        });
-                    } else {
-                        fs.mkdirSync(OUTPUT_DIR)
-                        fs.writeFile(outputPath, renderInfo, (err) => {
-                            if (err) throw err;
-                            console.log("Generate file")
-                        });
-                    }
-                } catch (err) {
-                    console.log(err)
-                }
-
             }
         })
 };
-initalize();
+async function init() {
+    console.log("Hi. Let's build your team");
+    try {
+        await initalize();
+        await buildTeam();
+        
+        const renderInfo = render(employee);
+            if (fs.existsSync(OUTPUT_DIR)) {
+                fs.writeFile(outputPath, renderInfo, (err) => {
+                    if (err) throw err;
+                    console.log("Generated file")
+                });
+            } else {
+                fs.mkdirSync(OUTPUT_DIR)
+                fs.writeFile(outputPath, renderInfo, (err) => {
+                    if (err) throw err;
+                    console.log("Generated file")
+                });
+            }
+        
+    } catch (err) {
+            console.log("This is a generating html err. " + err)
+        }
+}
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+init();
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
 
 

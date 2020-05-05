@@ -5,7 +5,6 @@
   - [User Story](#user-story-speech_balloon)
   - [Installation](#installation-floppy_disk)
   - [Usage](#usage)
-  - [Tests](#tests)
   - [Contribution](#contribution-handshake)
   - [Author](#author-bust_in_silhouette)
     - [Name](#author-bust_in_silhouette)
@@ -14,18 +13,20 @@
   - [License](#license-trophy)
   
   ### User Story :speech_balloon:
-  - As a manager, I want to generate a webpage that displays my team's basic info so that I have quick access to emails and GitHub profiles.
-  
+```
+  - As a manager, I want to generate a webpage that displays my team's basic info 
+  so that I have quick access to emails and GitHub profiles.
+```
   ###  Installation :floppy_disk::
-  > npm install 
-   
+  
+```
+    - dependencies: inquirer "^6.3.1"
+    - devDependencies": jest "^24.8.0 
+```
   ### Usage
 
    > var 10_OOP_TemplateEngine = require("10_OOP_TemplateEngine")
   
-  ### Tests
-  
-  - install dev dependencies:
 
  ### Contribution :handshake: 
  
