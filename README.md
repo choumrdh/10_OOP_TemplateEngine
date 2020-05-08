@@ -1,5 +1,5 @@
 # Project Title: 10_OOP_TemplateEngine :raised_hands:
-  - One of the most important aspects of programming is writing code that is readable, reliable, and maintainable. Oftentimes, how we design our code is just as important as the code itself. In this homework assignment, your challenge is to build a Node CLI that takes in information about employees and generates an HTML webpage that displays summaries for each person. Since testing is a key piece in making code maintainable, you will also be ensuring that all unit tests pass.:bulb: 
+  - Node CLI that takes in information about employees and generates an HTML webpage that displays summaries for each person. :bulb: 
 
   ## Table of Contents:
   - [User Story](#user-story-speech_balloon)
@@ -38,9 +38,7 @@
   #### 	Author :bust_in_silhouette:
    - Name: Michelle [![follower](https://img.shields.io/github/followers/choumrdh?label=follower&style=social)](https://github.com/choumrdh?tab=followers)
   
-  > - GitHub: [choumrdh](https://github.com/choumrdh)
-  > - email: chou.m.rdh@gmail.com
-  >  
+  > - GitHub: [choumrdh](https://github.com/choumrdh) 
   
  ### License :trophy:
    - [![Copyright](https://img.shields.io/badge/Copyright-Michelle-blue)](https://github.com/choumrdh)

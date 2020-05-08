@@ -18,12 +18,16 @@ const managerQuestions = [{
     name: "name",
     message: "What is your manager's name?",
     validate: (name) => {
-        if (name === "") {
-            console.log(". Please enter name");
+        var checkUpperCase = /^[A-Z]/;
+        if (checkUpperCase.test(name)){
+            console.log(`. Hello, ${name}`)
+            return true
+        } else if(name === ""){
+            console.log("Please Enter name");
             return false
         } else {
-            return true
-            
+            console.log(". Please enter name with capitalized first letter.");
+            return false
         }
     }
 }, {
@@ -44,7 +48,7 @@ const managerQuestions = [{
     message: "What is your manager's email?",
     validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
-            console.log(". Thank you for provide an email")
+            console.log(". Thank you for providing email")
             return true;
         } else {
             console.log(". Please Enter a valid email")
@@ -77,11 +81,16 @@ const engineerQuestions = [{
     name: "name",
     message: "What is the engineer's name?",
     validate: (name) => {
-        if (name === "") {
-            console.log("Please enter name");
+        var checkUpperCase = /^[A-Z]/;
+        if (checkUpperCase.test(name)){
+            console.log(`. Added, ${name}`)
+            return true
+        } else if(name === ""){
+            console.log("Please Enter name");
             return false
         } else {
-            return true
+            console.log(". Please enter name with capitalized first letter.");
+            return false
         }
     }
 }, {
@@ -102,7 +111,7 @@ const engineerQuestions = [{
     message: "What is the engineer's email?",
     validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
-            console.log(". Thank you for provide a valid email")
+            console.log(". Thank you for providing email")
             return true;
         } else {
             console.log(". Please Enter a valid email")
@@ -119,11 +128,16 @@ const internQuestions = [{
     name: "name",
     message: "What is the intern's name?",
     validate: (name) => {
-        if (name === "") {
-            console.log(". Please enter name");
+        var checkUpperCase = /^[A-Z]/;
+        if (checkUpperCase.test(name)){
+            console.log(`. Added, ${name}`)
+            return true
+        } else if(name === ""){
+            console.log("Please Enter name");
             return false
         } else {
-            return true
+            console.log(". Please enter name with capitalized first letter.");
+            return false
         }
     }
 }, {
@@ -144,7 +158,7 @@ const internQuestions = [{
     message: "What is the 's email?",
     validate: (email) => {
         if (email.includes("@") && email.includes(".")) {
-            console.log(". Thank you for provide a valid email")
+            console.log(". Thank you for providing email")
             return true;
         } else {
             console.log(". Please Enter a valid email")
